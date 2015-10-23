@@ -4,7 +4,7 @@
 'use strict';
 
 function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.")
+    console.log("Please choose either 'rock', 'paper', or 'scissors’.”);
     return prompt();
 }
 function randomPlay() {
@@ -34,7 +34,7 @@ function getComputerMove(move) {
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
     
-	return move|| randomPlay()
+	return move|| randomPlay();
     }
 
 function getWinner(playerMove,computerMove) {
@@ -59,8 +59,8 @@ function getWinner(playerMove,computerMove) {
 	    winner='computer';
     }else if (playerMove==='scissors'&&computerMove==='paper') {
 	    winner='player';
-    }else (playerMover==='scissors'&&computerMove==='scissors'); {
-        winner='tie';
+    }else if (playerMove==='scissors'&&computerMove==='scissors') {
+	    winner='tie';
     }
 	return winner;
 }
@@ -70,7 +70,27 @@ function playToFive() {
     var playerWins = 0;
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
+
+		while (playerWins<5&&computerWins<5) {
+	var playerPick = getPlayerMove();
+	var computerPick = getComputerMove();
+	var winnerOfFive = getWinner(playerPick,computerPick);
+	    
+	    getWinner(playerPick,computerPick);
+	    if (winnerOfFive==='player') {
+		    playerWins +=1;
+		    console.log("Player picked"+" "+playerPick+" "+"and computer picked"+" "+computerPick+".");
+		    console.log("The current score is"+":"+" "+"player="+playerWins+" "+"&"+" "+"computer="+computerWins+".");
+	      }
+	    else if (winnerOfFive==='computer') {
+		    computerWins +=1;
+		    console.log("Player picked"+" "+playerPick+" "+"and computer picked"+" "+computerPick+ ".");
+		    console.log("The current score is"+":"+" "+"player="+playerWins+" "+"&"+" "+"computer="+computerWins+".");
+	      }
+        else if (winnerOfFive==='tie') {
+            console.log("Tie. Please make new selection.");
+        }
+	    }
+	    
     return [playerWins, computerWins];
 }
-
